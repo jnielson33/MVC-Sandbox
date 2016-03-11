@@ -1,0 +1,57 @@
+package com.example.jarednielson.myapplication;
+
+import java.io.Serializable;
+
+/**
+ * Created by jarednielson on 3/9/16.
+ */
+
+//Creates the Workout java bean
+public class Workout implements Serializable {
+
+        String workoutType;
+        String theReps;
+        String theDate;
+
+
+    public Workout(String workoutType, String theReps, String theDate) {
+        this.workoutType = workoutType;
+        this.theReps = theReps;
+        this.theDate = theDate;
+    }
+
+    public Workout() {
+    }
+
+    public String getworkoutType() {
+        return workoutType;
+    }
+
+    public void setworkoutType(String workoutType) {
+        this.workoutType = workoutType;
+    }
+
+    public String gettheReps() {
+        return theReps;
+    }
+
+    public void settheReps(String theReps) {
+        this.theReps = theReps;
+    }
+
+    public String getTheDate() {
+        return theDate;
+    }
+
+    public void setTheDate(String theDate) {
+        this.theDate = theDate;
+    }
+
+    @Override
+    public String toString() {
+        return "----------Added Workout---------- \n" +
+                "Workout: " + workoutType + "\n" +
+                "Reps: " + theReps + "\n" +
+                "Date: " + theDate + "\n";
+    }
+}

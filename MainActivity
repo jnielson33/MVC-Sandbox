@@ -1,0 +1,105 @@
+package com.example.jarednielson.myapplication;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+
+
+
+public class MainActivity extends AppCompatActivity {
+
+    //Reference to items in the activity_main
+    //Plugs used in the activity_main
+    EditText workoutTypeTxt;
+    EditText repsTxt;
+    EditText dateTxt;
+    TextView infoTextView;
+    Button saveButton;
+    Button loadButton;
+
+
+    //Workout aWorkout = new Workout();
+
+    //Creates a reference to the model class.
+    //This creates the array list for the information to be saved to
+    model aModel = new model();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        //Initializes the view
+        //Connects the plugs to the MainActivity
+        workoutTypeTxt = (EditText) findViewById(R.id.workoutTypeTxt);
+        repsTxt = (EditText) findViewById(R.id.repsTxt);
+        dateTxt = (EditText) findViewById(R.id.dateTxt);
+        infoTextView = (TextView) findViewById(R.id.infoTextView);
+        saveButton = (Button) findViewById(R.id.saveButton);
+        loadButton = (Button) findViewById(R.id.loadButton);
+
+
+
+
+
+    }
+        //Creates the save button - The On Click information is called in the XML file of the activity_main
+    public void Save(View view) {
+
+        //Creates three empty strings to store information
+        String focus = "";
+        String type = "";
+        String date = "";
+
+        //If the information entered in the workout type field is not empty store it to the focus string
+        if (!workoutTypeTxt.getText().toString().equals("")) {
+            focus = workoutTypeTxt.getText().toString();
+        }
+
+        //If the reps text field is not empty store it to the type string
+        if (!repsTxt.getText().toString().equals("")) {
+            type = repsTxt.getText().toString();
+        }
+        //If the date text field in not empty store it to the date string
+        if (!dateTxt.getText().toString().equals("")) {
+            date = dateTxt.getText().toString();
+        }
+
+
+        //Creates a new instance of the Workout class. The information entered in the text field in written to the instance of the Workout java bean
+        Workout workout = new Workout(focus, type, date);
+
+        //The information store in the new Workout instance is stored in the array list from the created instance of model
+        aModel.addWorkout(workout);
+
+
+
+//        aWorkout.setFocusArea(workoutTypeTxt.getText().toString());
+//        aWorkout.setTheWorkout(repsTxt.getText().toString());
+//        aWorkout.setTheDate(dateTxt.getText().toString());
+//
+//        aModel.addWorkout(aWorkout);
+
+
+    }
+
+    //Creates the load button - The On Click is also linked to the XML file
+    public void load(View view) {
+//        infoTextView.setText(aModel.getWorkout().toString());
+
+
+        //If there is anything saved to the instance of model then change the infoTextView item to display that information
+        if (aModel.getTotalWorkoutNumber() != 0)
+
+        {
+            infoTextView.setText("SAVED WORKOUT INFORMATION \n\n" + aModel.getWorkout().toString() + "\n");
+        }
+        }
+
+    }
+

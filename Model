@@ -1,0 +1,31 @@
+package com.example.jarednielson.myapplication;
+
+import java.util.ArrayList;
+
+/**
+ * Created by jarednielson on 3/9/16.
+ */
+
+//Creates a model class where the information will be saved from the MainActivity
+public class model {
+
+    //Array list that the information will be stored in
+    ArrayList workoutList = new ArrayList();
+
+
+    public ArrayList addWorkout(Workout workout) {
+
+        workoutList.add(workout);
+
+        return workoutList;
+    }
+
+    public ArrayList getWorkout() {
+        return workoutList;
+    }
+
+    public int getTotalWorkoutNumber() {
+        return workoutList.size();
+    }
+
+}
